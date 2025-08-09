@@ -1,0 +1,46 @@
+:root {
+  --bg: #2d2334;
+  --grain-opacity: 0.06;
+}
+
+* { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background-color: var(--bg);
+  color: #efe8da;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* Subtle vignette & noise for a lightly textured feel */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1200px 800px at 50% 35%, rgba(255,255,255,0.03), transparent 60%),
+    radial-gradient(900px 700px at 60% 75%, rgba(0,0,0,0.25), transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/feTurbulence%3E%3C/fi%3E%3C/svg%3E");
+  background-size: auto, auto, 256px 256px;
+  mix-blend-mode: soft-light;
+  opacity: var(--grain-opacity);
+}
+
+main.center {
+  width: min(92vw, 900px);
+  display: grid;
+  place-items: center;
+  padding: min(8vw, 64px) 0;
+}
+
+img.hero {
+  width: min(85vw, 768px);
+  height: auto;
+  display: block;
+}
