@@ -1,6 +1,6 @@
 :root {
-  --bg: #2d2334;
-  --grain-opacity: 0.06;
+  --bg: #7034a0; /* page background color sampled from artwork */
+  --hero-size: clamp(360px, 60vmin, 900px); /* responsive width for centered background image */
 }
 
 * { box-sizing: border-box; }
@@ -13,23 +13,12 @@ body {
   display: grid;
   place-items: center;
   background-color: var(--bg);
-  color: #efe8da;
+  background-image: url("central_image_transparent.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: var(--hero-size);
+  color: #253243;
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-}
-
-/* Subtle vignette & noise for a lightly textured feel */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    radial-gradient(1200px 800px at 50% 35%, rgba(255,255,255,0.03), transparent 60%),
-    radial-gradient(900px 700px at 60% 75%, rgba(0,0,0,0.25), transparent 70%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/feTurbulence%3E%3C/fi%3E%3C/svg%3E");
-  background-size: auto, auto, 256px 256px;
-  mix-blend-mode: soft-light;
-  opacity: var(--grain-opacity);
 }
 
 main.center {
